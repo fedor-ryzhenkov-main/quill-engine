@@ -1,0 +1,39 @@
+.bounded-root-column {
+    display: grid;
+    grid-template-columns: 1fr 80rem 1fr;
+    height: 100vh;
+
+    @media (max-width: 700px) {
+        grid-template-columns: auto;
+    }
+}
+
+.left-striped-background {
+    background-image: linear-gradient(45deg, #c91f37 16.67%, #000000 16.67%, #000000 50%, #c91f37 50%, #c91f37 66.67%, #000000 66.67%, #000000 100%);
+    background-size: 84.85px 85.415px;
+}
+
+.right-striped-background {
+    transform: scaleX(-1);
+    background-image: linear-gradient(45deg, #c91f37 16.67%, #000000 16.67%, #000000 50%, #c91f37 50%, #c91f37 66.67%, #000000 66.67%, #000000 100%);
+    background-size: 84.85px 84.85px;
+}
+
+.left-time-bend-striped-background {
+    background-image: linear-gradient(45deg, #04D9FF 16.67%, #000000 16.67%, #000000 50%, #04D9FF 50%, #04D9FF 66.67%, #000000 66.67%, #000000 100%);
+    background-size: 84.85px 85.415px;
+    animation: moveStripes 2s linear infinite;
+}
+
+.left-time-bend-striped-background {
+    transform: scaleX(-1);
+    background-image: linear-gradient(45deg, #04D9FF 16.67%, #000000 16.67%, #000000 50%, #04D9FF 50%, #04D9FF 66.67%, #000000 66.67%, #000000 100%);
+    background-size: 84.85px 85.415px;
+    animation: moveStripes 2s linear infinite;
+}
+
+@keyframes moveStripes {
+    to {
+        background-position: 0 -170.83px;
+    }
+}

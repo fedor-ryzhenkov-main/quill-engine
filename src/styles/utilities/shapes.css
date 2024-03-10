@@ -1,0 +1,18 @@
+.cut-corners-box {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
+}
+
+.cut-corners-box::after {
+  content: '';
+  position: absolute;
+  width: 1100%; height: 1100%;
+  bottom: 10px; right: -500%;
+  background: var(--cyborg-yellow);
+  transform-origin: 54% 100%;
+  transform: rotate(-45deg);
+  z-index: -1;
+}

@@ -1,0 +1,4 @@
+.dot-background {
+    background-image: radial-gradient(circle, white 3%, transparent 3%);
+    background-size: 60px 60px; /* Size of the dot pattern */
+}

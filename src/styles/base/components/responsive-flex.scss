@@ -1,0 +1,47 @@
+@mixin descend-horizontal-margin {
+  > * {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+@mixin descend-vertical-margin {
+  > * {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.responsive-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  width: fit-content;
+
+  @media (min-width: 700px) {
+    //@include descend-horizontal-margin
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    //@include descend-vertical-margin
+  }
+
+}

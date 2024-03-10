@@ -1,0 +1,16 @@
+.dashed-border {
+  --border-color: white;
+  --dash-frequency: 25%;
+  --dash-size-ratio: 8;
+  --dash-size-main: 3px;
+  border: var(--dash-size-main) solid rgba(0, 0, 0, 0);
+  --horizontal-border: / calc($ratio * $size) $size linear-gradient(90deg, $color $dash-frequency, #0000 0 calc(100% - $dash-frequency), $color 0) border-box round no-repeat;
+  --vertical-border: / $size calc($ratio * $size) linear-gradient($color $dash-frequency, #0000 0 calc(100% - $dash-frequency), $color 0) border-box no-repeat round;
+  background: 0 0 /calc(var(--dash-size-ratio) * var(--dash-size-main)) var(--dash-size-main) linear-gradient(90deg, var(--border-color) var(--dash-frequency), rgba(0, 0, 0, 0) 0 calc(100% - var(--dash-frequency)), var(--border-color) 0) border-box round no-repeat, 0 100% /calc(var(--dash-size-ratio) * var(--dash-size-main)) var(--dash-size-main) linear-gradient(90deg, var(--border-color) var(--dash-frequency), rgba(0, 0, 0, 0) 0 calc(100% - var(--dash-frequency)), var(--border-color) 0) border-box round no-repeat, 0 0 /var(--dash-size-main) calc(var(--dash-size-ratio) * var(--dash-size-main)) linear-gradient(var(--border-color) var(--dash-frequency), rgba(0, 0, 0, 0) 0 calc(100% - var(--dash-frequency)), var(--border-color) 0) border-box no-repeat round, 100% 0 /var(--dash-size-main) calc(var(--dash-size-ratio) * var(--dash-size-main)) linear-gradient(var(--border-color) var(--dash-frequency), rgba(0, 0, 0, 0) 0 calc(100% - var(--dash-frequency)), var(--border-color) 0) border-box no-repeat round;
+}
+
+.dashed-border.inner-border {
+  background-position: 0 2%, 0 98%, 2% 0, 98% 0;
+}
+
+/*# sourceMappingURL=borders.css.map */

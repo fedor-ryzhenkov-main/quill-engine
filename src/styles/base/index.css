@@ -1,0 +1,15 @@
+@import "../utilities/borders.css";
+@import "../fonts/font-faces.css";
+@import "../fonts/fonts.css";
+@import "../utilities/global/cursor.css";
+@import "base/htmltags.css";
+@import "../utilities/global/selection.css";
+@import "layout.css";
+
+:root {
+    --foreign-crimson: red;
+    --cyborg-yellow: yellow;
+    --neon-blue: blue;
+    --sprawl-purple: purple;
+    color: white;
+}

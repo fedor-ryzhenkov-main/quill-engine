@@ -1,0 +1,14 @@
+::selection {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.special-selection {
+    --selection-background-color: blue;
+    --selection-color: red
+}
+
+.special-selection ::selection {
+    background-color: var(--selection-background-color);
+    color: var(--selection-color);
+}

@@ -1,0 +1,12 @@
+.splattered-text {
+    position: relative; /* Replace with your image path */
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: auto;
+    height: auto;
+}
+
+
+.text {
+    position: absolute;
+}

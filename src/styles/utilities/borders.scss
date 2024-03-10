@@ -1,0 +1,32 @@
+.dashed-border {
+  --border-color: white;
+  --dash-frequency: 25%;
+  --dash-size-ratio: 8;
+  --dash-size-main: 3px;
+
+  $color: var(--border-color);
+  $dash-frequency: var(--dash-frequency);
+  $ratio: var(--dash-size-ratio);
+  $size: var(--dash-size-main);
+
+  border: var(--dash-size-main) solid #0000;
+
+  --horizontal-border: / calc($ratio * $size) $size linear-gradient(90deg, $color $dash-frequency, #0000 0 calc(100% - $dash-frequency), $color 0) border-box round no-repeat;
+  --vertical-border: / $size calc($ratio * $size) linear-gradient($color $dash-frequency, #0000 0 calc(100% - $dash-frequency), $color  0) border-box no-repeat round;
+
+  $b1: / calc($ratio * $size) $size linear-gradient(90deg, $color $dash-frequency, #0000 0 calc(100% - $dash-frequency), $color 0) border-box round no-repeat;
+  $b2: / $size calc($ratio * $size) linear-gradient($color $dash-frequency, #0000 0 calc(100% - $dash-frequency), $color  0) border-box no-repeat round;
+
+  background: 0 0 $b1,
+  0 100% $b1,
+  0 0 $b2,
+  100% 0 $b2;
+}
+
+.dashed-border.inner-border {
+  background-position: 0 2%,
+  0 98%,
+  2% 0,
+  98% 0;
+}
+

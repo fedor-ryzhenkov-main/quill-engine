@@ -1,0 +1,8 @@
+body {
+    cursor: url("../../../assets/images/cursor.svg"), auto;
+}
+
+.interactable, button, a {
+    cursor: url("../../../assets/images/cursor_click.svg"), auto;
+}
+

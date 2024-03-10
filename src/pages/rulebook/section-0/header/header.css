@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    flex: 1;
+    max-width: fit-content;
+}
+
+.dummy {
+    flex-grow: 0;
+    transition: flex 7s cubic-bezier(.32,-0.01,.35,1) 0s;
+}
+
+.hovered {
+    flex-grow: 0.55;
+}
+
+.element {
+    border-top: 0.2rem solid var(--foreign-crimson); /* Replace #000 with the color you want */
+    border-left: 0.2rem solid var(--foreign-crimson); /* Replace #000 with the color you want */
+    border-right: 0;
+    border-bottom: 0;
+}

@@ -1,0 +1,23 @@
+{
+  "short_name": "Quill",
+  "name": "Quill Engine",
+  "icons": [
+    {
+      "src": "favicon1024x1024.webp",
+      "sizes": "1024x1024",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+
+    {
+      "src": "favicon144x144.webp",
+      "sizes": "144x144",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
