@@ -1,6 +1,6 @@
 import React from 'react';
 import {useScroll} from "./NavigationProvider";
-import colors from "../../styles/utilities/global/colors";
+import {color_theme} from "../../styles/utilities/global/theme";
 
 type ScrollLinkProps = {
     toId: string;
@@ -25,7 +25,7 @@ const ScrollLink = (props: ScrollLinkProps) => {
     };
 
     return (
-        <a style={{backgroundColor: colors.foreignCrimson, color: "white"}} onClick={scrollToComponent}>
+        <a style={{backgroundColor: color_theme.foreignCrimson, color: "white"}} onClick={scrollToComponent}>
             <b> {props.children} </b>
         </a>
     );

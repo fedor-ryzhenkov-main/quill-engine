@@ -1,6 +1,6 @@
 import '../../styles/base/components/topbar.css'
 import {ReactNode} from "react";
-import colors from "../../styles/utilities/global/colors";
+import {color_theme} from "../../styles/utilities/global/theme";
 
 type Props = {
     children: ReactNode;
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const TopBar: React.FC<Props> = ({children, className = ''}) => (
-    <div className={`topbar dashed-border ${className}`} style={{backgroundColor: "black", color: "white", '--border-color': 'white', 'selection-color': colors.cyborgYellow, '--selection-background-color': 'black'} as React.CSSProperties}>
+    <div className={`topbar dashed-border ${className}`} style={{backgroundColor: "black", color: "white", '--border-color': 'white', 'selection-color': color_theme.cyborgYellow, '--selection-background-color': 'black'} as React.CSSProperties}>
         {children}
     </div>
 );
