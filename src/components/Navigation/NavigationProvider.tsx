@@ -1,7 +1,7 @@
 import {ReactNode, useContext, useEffect, useRef} from 'react';
 import {createContext} from "react";
 
-type NavManProps = {
+type NavigationProviderProps = {
     children?: ReactNode;
 };
 
@@ -11,7 +11,7 @@ const ScrollContext = createContext({
 
 export const useScroll = () => useContext(ScrollContext);
 
-const NavigationProvider: React.FC<NavManProps> = (props) => {
+const NavigationProvider: React.FC<NavigationProviderProps> = (props) => {
     const scrollableElementsRef = useRef<Element[]>([]);
 
     useEffect(() => {

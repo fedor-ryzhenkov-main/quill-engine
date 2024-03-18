@@ -1,18 +1,23 @@
 import React from 'react';
-import useFetch from "../services/hooks/useFetch";
-import {BlocksContent, BlocksRenderer} from "@strapi/blocks-react-renderer";
-import {Chapter_Attributes} from "../types/chapter";
+import {BlocksRenderer} from "@strapi/blocks-react-renderer";
+import {Chapter} from "../types/chapter";
 
-const RulebookChapter = (data: Chapter_Attributes) => {
-
+const RulebookChapter = (data: Chapter) => {
     return (
         <div>
-            <h1>
-                {data.title}
-            </h1>
+            <h3 style={{marginBlockEnd: "0.5em"}}>
+                {data.attributes.title}
+            </h3>
 
-            <div>
-                <BlocksRenderer content={data.content}/>
+            <div style = {{textAlign: 'justify'}}>
+                {
+                    data.attributes.content.map(component => {
+                        switch (component.__component) {
+                            case "content.text":
+                                return <BlocksRenderer content={component.content}/>
+                        }
+                    })
+                }
             </div>
         </div>
     );

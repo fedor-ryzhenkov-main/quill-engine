@@ -10,5 +10,6 @@
     --cyborg-yellow: yellow;
     --neon-blue: blue;
     --sprawl-purple: purple;
-    color: white;
+    color: black;
+    font-size: 1.5rem
 }

@@ -1,18 +1,25 @@
 {
-  "short_name": "Quill",
-  "name": "Quill Engine",
+  "short_name": "",
+  "name": "Ill Omen",
   "icons": [
     {
-      "src": "favicon1024x1024.webp",
+      "src": "apple_favicon1024x1024.webp",
       "sizes": "1024x1024",
       "type": "image/webp",
       "purpose": "any"
     },
 
     {
-      "src": "favicon144x144.webp",
+      "src": "apple_favicon512x512.webp",
+      "sizes": "512x512",
+      "type":"image/webp",
+      "purpose": "any"
+    },
+
+    {
+      "src": "apple_favicon144x144.webp",
       "sizes": "144x144",
-      "type": "image/webp",
+      "type":"image/webp",
       "purpose": "any"
     }
   ],

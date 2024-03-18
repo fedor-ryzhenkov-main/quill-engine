@@ -16,10 +16,10 @@
       "type": "string"
     },
     "content": {
-      "type": "blocks"
-    },
-    "chapter_id": {
-      "type": "uid"
+      "type": "dynamiczone",
+      "components": [
+        "content.text"
+      ]
     }
   }
 }
