@@ -2,11 +2,12 @@ import './styles/base/index.css'
 import { withWrappers } from "./components/Wrapper";
 import React from "react";
 import { color_theme_css } from "./styles/utilities/global/theme";
-import RulebookChapter from "./pages/RulebookChapter";
 import useFetch from "./services/hooks/useFetch";
-import {Chapter} from "./types/chapter";
 import RulebookPart from "./pages/RulebookPart";
 import {Part} from "./types/part";
+import Header from "./components/Header";
+import twig from "./assets/images/twig.png"
+import PartsTableComponent from "./components/ContentTable";
 
 const PWA: React.FC = () => {
     React.useEffect(() => {
@@ -24,12 +25,22 @@ const PWA: React.FC = () => {
     )
 
     return (
-            <div style={{ margin: '0 auto', width: '50%'}}>
-                {
+        <div>
+            <Header headerChildren={
+                <div>
+
+                </div>
+            } expandedChildren={
+                <PartsTableComponent parts={data.data}/>
+            }/>
+            <div style={{margin: '0 auto', width: '60%'}}>
+            {
                     data.data.map((data: undefined) => RulebookPart(data as unknown as Part))
-                }
-            </div>
-    )
+        }
+    </div>
+</div>
+ )
+
 }
 
 export default withWrappers(PWA);
