@@ -1,9 +1,14 @@
 import React from 'react';
 import { Part } from '../types/part'
-import { Chapter } from '../types/chapter';  // Update the import path based on your folder structure
-
+import { Chapter } from '../types/chapter';
+import ScrollLink from "./Navigation/ScrollLink";  // Update the import path based on your folder structure
+import '../styles/base/components/content-table.css'
 const ChapterComponent: React.FC<{ chapter: Chapter }> = ({ chapter }) => (
-    <li>{chapter.attributes.title}</li>
+        <li>
+            <ScrollLink toId={`Chapter: ${chapter.id}`}>
+                {chapter.attributes.title}
+            </ScrollLink>
+        </li>
 );
 
 const PartComponent: React.FC<{ part: Part }> = ({ part }) => (
@@ -16,9 +21,9 @@ const PartComponent: React.FC<{ part: Part }> = ({ part }) => (
 );
 
 const PartsTableComponent: React.FC<{ parts: Part[] }> = ({ parts }) => (
-    <div>
+    <div className='content-table'>
         <ul>
-            {parts.map(p => <PartComponent key={p.id} part={p} />)}
+            {parts.map(p => <PartComponent key={p.id} part={p}/>)}
         </ul>
     </div>
 );

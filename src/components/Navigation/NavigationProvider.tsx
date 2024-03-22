@@ -16,10 +16,7 @@ const NavigationProvider: React.FC<NavigationProviderProps> = (props) => {
 
     useEffect(() => {
         // Find all scrollable elements in the DOM
-        scrollableElementsRef.current = Array.from(document.querySelectorAll('*')).filter(el => {
-            const overflowY = window.getComputedStyle(el).overflowY;
-            return overflowY === 'scroll' || overflowY === 'auto';
-        });
+        scrollableElementsRef.current = Array.from(document.querySelectorAll('html'))
 
         const initStack: string[] = [];
         sessionStorage.setItem('backStack', JSON.stringify(initStack))
@@ -44,6 +41,7 @@ const NavigationProvider: React.FC<NavigationProviderProps> = (props) => {
         sessionStorage.setItem(fromForwardStack ? 'forwardStack' : 'backStack', JSON.stringify(item));
 
         if (scrollState) {
+            console.log("started scroll for each scrollableElementsRef")
             scrollableElementsRef.current.forEach((el, index) => {
                 el.scrollTop = scrollState[index] || 0;
             });
@@ -54,6 +52,7 @@ const NavigationProvider: React.FC<NavigationProviderProps> = (props) => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.altKey) {
                 if (event.key === 'ArrowLeft') {
+                    console.log("tried to navigate back")
                     if (JSON.parse(sessionStorage.getItem('backStack')!!).length != 0) {
                         captureScrollPositions(true)
                         restoreScrollPositions()
@@ -65,6 +64,7 @@ const NavigationProvider: React.FC<NavigationProviderProps> = (props) => {
                 }
 
                 if (event.key === 'ArrowRight') {
+                    console.log("tried to navigate forward")
                     if (JSON.parse(sessionStorage.getItem('forwardStack')!!).length != 0) {
                         captureScrollPositions()
                         restoreScrollPositions(true)

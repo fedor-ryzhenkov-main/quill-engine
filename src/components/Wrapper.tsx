@@ -9,7 +9,6 @@ const providers = [NavigationProvider, CursorAnimationProvider];
 
 // This HOC takes a component as an argument and returns the component with provided contexts
 export const withWrappers = (Component: React.FunctionComponent<any>) => {
-    console.log("Wrappers downloaded")
     return (props: any) => providers.reduceRight((children, Provider) => {
         return <Provider>{children}</Provider>;
     }, <Component {...props} />);

@@ -8,14 +8,13 @@ const Wrapper = styled.div<{ expanded: boolean }>`
     left: 0;
     width: 100%;
     z-index: 100;
-    transition: height 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 `;
 
 const HeaderContent = styled.div`
-    height: 2vh;
+    height: 1em;
     background-color: black;
     color: white;
     display: flex;
@@ -23,19 +22,18 @@ const HeaderContent = styled.div`
     justify-content: center;
     padding-left: 60px;
     padding-right: 60px;
-
 `;
 
-const ExpandedContent = styled.div<{ expanded: boolean }>`
-    height: ${({expanded}) => expanded ? '70vh' : '0'};
+const ExpandedContent = styled.div<{ expanded: boolean, hover: boolean }>`
+    height: ${({expanded, hover}) => expanded ? '70vh' : hover ? "1em" : "0em"};
     background-color: black;
     color: white;
     display: flex;
-    transition: height 0.3s ease;
     flex-direction: column;
     justify-content: flex-end;
     padding-left: 60px;
     padding-right: 60px;
+    transition: height 0.3s ease;
 `;
 
 type HeaderProps = {
@@ -45,16 +43,26 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({headerChildren, expandedChildren}) => {
     const [expanded, setExpanded] = useState(false);
+    const [hover, setHover] = useState(false);
 
     return (
-        <Wrapper expanded={expanded}>
+        <Wrapper expanded={expanded} style={{zIndex: '99'}}>
             <div onClick={() => setExpanded(!expanded)}>
-                <ExpandedContent expanded={expanded}>
+
+                <div
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                    style={{position: "absolute", height: expanded ? "0em" : "4em", width: "100%"}}
+                />
+
+                <ExpandedContent expanded={expanded} hover={hover}>
                     {expandedChildren}
                 </ExpandedContent>
+
                 <HeaderContent>
                     {headerChildren}
                 </HeaderContent>
+
                 <img src={inkLine} alt="Ink Line" style={{
                     width: '100%',
                     height: 'auto',

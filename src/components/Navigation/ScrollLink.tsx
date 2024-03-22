@@ -19,13 +19,14 @@ const ScrollLink = (props: ScrollLinkProps) => {
     const scrollToComponent = () => {
         saveScrollPosition();
         const element = document.getElementById(props.toId);
+        console.log(`Navigated to the element ${element}`)
         if (element) {
             element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
         }
     };
 
     return (
-        <a style={{backgroundColor: color_theme.foreignCrimson, color: "white"}} onClick={scrollToComponent}>
+        <a onClick={scrollToComponent}>
             <b> {props.children} </b>
         </a>
     );
