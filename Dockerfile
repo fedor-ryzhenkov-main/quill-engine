@@ -1,5 +1,5 @@
 # Building the app
-FROM node:latest as builder
+FROM node:latest as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install - force
