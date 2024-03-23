@@ -1,14 +1,14 @@
 version: '3'
 services:
   react-app:
-    tty: true
     image: react-app
     build:
-      context: ./
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3000:80"
     env_file:
-      - ./deploy.env
+      - deploy.env
   strapi-app:
     tty: true
     image: strapi-app
