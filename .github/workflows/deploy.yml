@@ -42,7 +42,7 @@ jobs:
         run: docker-compose -f 'docker-compose.yml' up -d
 
       - name: Tag docker image of react-app
-        run: docker tag react-app:${{ github.sha }} luoencz/react-app:${{ github.sha }}
+        run: docker tag docker.io/library/react-app:${{ github.sha }} luoencz/react-app:${{ github.sha }}
 
       - name: Tag docker image of strapi-app
         run: docker tag strapi-app:${{ github.sha }} luoencz/strapi-app:${{ github.sha }}
