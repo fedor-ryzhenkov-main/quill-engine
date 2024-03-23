@@ -33,7 +33,7 @@ jobs:
           password: '${{ secrets.DOCKER_HUB_PASSWORD }}'
 
       - name: Build docker image of react-app
-        run: docker build -t react-app-app:${{ github.sha }} .
+        run: docker build -t react-app:${{ github.sha }} .
 
       - name: Build docker image of strapi-app
         run: docker build -t strapi-app:${{ github.sha }} ./quill-engine-strapi
