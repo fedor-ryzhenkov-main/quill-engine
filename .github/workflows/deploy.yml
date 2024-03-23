@@ -53,11 +53,28 @@ jobs:
       - name: Push docker image of strapi-app
         run: docker push luoencz/strapi-app:${{ github.sha }}
 
-      - name: SSH and get compose up and running
+      - name: SSH and get strapi-app running
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DROPLET_HOST }}
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
           script: |
-            docker-compose up -d
+            docker stop strapi-app || true
+            docker rm strapi-app || true
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/strapi-app:latest
+            docker run -d --name strapi-app -p 1337:1337 ${{ secrets.DOCKERHUB_USERNAME }}/strapi-app:latest
+
+      - name: SSH and get react-app running
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 23
+          script: |
+            docker stop react-app || true
+            docker rm react-app || true
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/react-app:latest
+            docker run -d --name react-app -p "3000:3000" --env-file ./deploy.env ${{ secrets.DOCKERHUB_USERNAME }}/react-app:latest
