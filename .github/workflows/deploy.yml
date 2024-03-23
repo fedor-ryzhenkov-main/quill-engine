@@ -53,6 +53,15 @@ jobs:
       - name: Push docker image of strapi-app
         run: docker push luoencz/strapi-app:${{ github.sha }}
 
+      - name: SCP and update containers
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "./docker-compose.yml" # replace path_to_your_docker-compose.yml with actual path
+          target: "$HOME" # replace remote_target_directory with actual directory path on remote system
+
       - name: SSH and update containers
         uses: appleboy/ssh-action@master
         with:
@@ -60,7 +69,6 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            cd $HOME
             docker-compose down
-            docker pull luoencz/react-app
-            docker pull luoencz/strapi-app
             docker-compose up -d
