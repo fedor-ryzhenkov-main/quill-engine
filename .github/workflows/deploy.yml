@@ -61,6 +61,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             docker-compose down
-            docker pull username/react-app
-            docker pull username/strapi-app
+            docker pull luoencz/react-app
+            docker pull luoencz/strapi-app
             docker-compose up -d
