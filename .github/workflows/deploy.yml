@@ -58,11 +58,11 @@ jobs:
           images: '[
               {
                 "name": "react-app",
-                 "image":{
+                 "image": {
                   "registry_type": "DOCKER_HUB",
                   "repository": "luoencz/strapi-app",
                   "tag": "${{ github.sha }}"
-                },
+                }
               },
               {
                 "name": "strapi-app",
@@ -70,5 +70,6 @@ jobs:
                   "registry_type": "DOCKER_HUB",
                   "repository": "luoencz/strapi-app",
                   "tag": "${{ github.sha }}"
-                },
+                }
+              }
             ]'
