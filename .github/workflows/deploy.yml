@@ -57,7 +57,7 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
           images: '[
               {
-                "name": "react-app",
+                "name": "luoencz-react-app",
                  "image": {
                   "registry_type": "DOCKER_HUB",
                   "repository": "luoencz/strapi-app",
@@ -65,7 +65,7 @@ jobs:
                 }
               },
               {
-                "name": "strapi-app",
+                "name": "luoencz-strapi-app",
                 "image":{
                   "registry_type": "DOCKER_HUB",
                   "repository": "luoencz/strapi-app",
