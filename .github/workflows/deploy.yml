@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 16
 
       - name: Set up Git config
         run: |
@@ -29,7 +29,7 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
-          username: 'luoencz'
+          username: '${{ secrets.DOCKERHUB_USERNAME }}'
           password: '${{ secrets.DOCKER_HUB_PASSWORD }}'
 
       - name: Build docker image of react-app
@@ -39,16 +39,16 @@ jobs:
         run: docker build -t strapi-app:${{ github.sha }} ./quill-engine-strapi
 
       - name: Tag docker image of react-app
-        run: docker tag react-app:${{ github.sha }} luoencz/react-app:${{ github.sha }}
+        run: docker tag react-app:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/react-app:${{ github.sha }}
 
       - name: Tag docker image of strapi-app
-        run: docker tag strapi-app:${{ github.sha }} luoencz/strapi-app:${{ github.sha }}
+        run: docker tag strapi-app:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/strapi-app:${{ github.sha }}
 
       - name: Push docker image of react-app
-        run: docker push luoencz/react-app:${{ github.sha }}
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/react-app:${{ github.sha }}
 
       - name: Push docker image of strapi-app
-        run: docker push luoencz/strapi-app:${{ github.sha }}
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/strapi-app:${{ github.sha }}
 
       - name: DigitalOcean App Platform deployment
         uses: digitalocean/app_action@v1.1.6
