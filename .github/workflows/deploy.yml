@@ -38,9 +38,6 @@ jobs:
       - name: Build docker image of strapi-app
         run: docker build -t strapi-app:${{ github.sha }} ./quill-engine-strapi
 
-      - name: Compose Docker
-        run: docker-compose -f 'docker-compose.yml' up -d
-
       - name: Tag docker image of react-app
         run: docker tag react-app:${{ github.sha }} luoencz/react-app:${{ github.sha }}
 
@@ -53,14 +50,25 @@ jobs:
       - name: Push docker image of strapi-app
         run: docker push luoencz/strapi-app:${{ github.sha }}
 
-      - name: SSH and update containers
-        uses: appleboy/ssh-action@master
+      - name: DigitalOcean App Platform deployment
+        uses: digitalocean/app_action@v1.1.6
         with:
-          host: ${{ secrets.DROPLET_HOST }}
-          username: root
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            docker-compose down
-            docker pull luoencz/react-app
-            docker pull luoencz/strapi-app
-            docker-compose up -d
+          app_name: quill-engine-droplet
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          images: '[
+              {
+                "name": "react-app",
+                 "image":{
+                  "registry_type": "DOCKER_HUB",
+                  "repository": "luoencz/strapi-app",
+                  "tag": "${{ github.sha }}"
+                },
+              },
+              {
+                "name": "strapi-app",
+                "image":{
+                  "registry_type": "DOCKER_HUB",
+                  "repository": "luoencz/strapi-app",
+                  "tag": "${{ github.sha }}"
+                },
+            ]'
