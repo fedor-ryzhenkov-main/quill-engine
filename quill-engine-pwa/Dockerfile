@@ -9,13 +9,6 @@ RUN npm run build
 # Running the app
 FROM node:latest as runner
 WORKDIR /app
-
-# copy from build image
 COPY --from=builder /app/build ./build
-COPY --from=builder /app/node_modules ./node_modules
-COPY package*.json ./
-
-# remove dev dependencies
-RUN npm prune --production
-
-CMD ["npx", "serve", "-s", "build"]
+RUN npm install -g serve
+CMD ["serve", "-s", "build"]
