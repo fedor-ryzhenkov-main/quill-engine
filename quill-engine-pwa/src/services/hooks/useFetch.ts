@@ -5,6 +5,7 @@ const useFetch = (url: string) => {
     const [data, setData] = useState<any | null>(null);
     const [error, setError] = useState<Error | null>(null);
     const [loading, setLoading] = useState(true);
+    console.log(process.env.REACT_APP_STRAPI_API_TOKEN)
 
     useEffect(() => {
         fetchData().catch(err => {

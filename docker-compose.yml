@@ -3,14 +3,10 @@ services:
   react-app:
     image: react-app
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./quill-engine-pwa
     ports:
-      - "3000:80"
-    env_file:
-      - deploy.env
+      - "3000:3000"
   strapi-app:
-    tty: true
     image: strapi-app
     build:
       context: ./quill-engine-strapi
