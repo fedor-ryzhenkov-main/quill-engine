@@ -1,4 +1,5 @@
 export default [
+  'db-strapi-sqlite::logger',
   'db-strapi-sqlite::errors',
   'db-strapi-sqlite::security',
   'db-strapi-sqlite::cors',
