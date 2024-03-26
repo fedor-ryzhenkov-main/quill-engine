@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-quill-engine-pwa/node_modules
+pwa/node_modules
 /.pnp
 .pnp.js
 
@@ -9,7 +9,7 @@ quill-engine-pwa/node_modules
 /coverage
 
 # production
-quill-engine-pwa/build
+pwa/build
 
 # misc
 .DS_Store
