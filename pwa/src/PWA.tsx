@@ -9,7 +9,14 @@ import Header from "./components/Header";
 import PartsTableComponent from "./components/ContentTable";
 
 const PWA: React.FC = () => {
-    const { data, loading} = useFetch('http://localhost:1337/api/parts?populate[0]=chapter_collection&populate[1]=chapter_collection.content')
+    let db: string;
+
+    if (process.env.NODE_ENV === 'development') {
+        db = 'http://localhost:1337/api/parts?populate[0]=chapter_collection&populate[1]=chapter_collection.content';
+    } else {
+        db = 'https://quill-engine-app-emz7p.ondigitalocean.app/db/api/parts?populate[0]=chapter_collection&populate[1]=chapter_collection.content';
+    }
+    const { data, loading} = useFetch(db)
 
     React.useEffect(() => {
         const style = document.createElement('style');
