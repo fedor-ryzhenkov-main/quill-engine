@@ -12,9 +12,11 @@ const PWA: React.FC = () => {
     let db: string;
 
     if (process.env.NODE_ENV === 'development') {
+        console.log("development fetch")
         db = 'http://localhost:1337/api/parts?populate[0]=chapter_collection&populate[1]=chapter_collection.content';
     } else {
-        db = 'https://quill-engine-app-emz7p.ondigitalocean.app/db/api/parts?populate[0]=chapter_collection&populate[1]=chapter_collection.content';
+        console.log("production fetch")
+        db = 'https://quill-engine-app-emz7p.ondigitalocean.app/db/api/parts?popu';
     }
     const { data, loading} = useFetch(db)
 
