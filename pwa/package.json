@@ -2,6 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/pwa",
   "dependencies": {
     "@strapi/blocks-react-renderer": "^1.0.1",
     "@testing-library/jest-dom": "^5.17.0",
