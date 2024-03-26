@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.4800223b.css",
-    "main.js": "/static/js/main.b807f2d1.js",
-    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "main.js": "/static/js/main.44168846.js",
+    "static/js/787.b701888c.chunk.js": "/static/js/787.b701888c.chunk.js",
     "static/media/JetBrainsMono-ExtraBoldItalic.ttf": "/static/media/JetBrainsMono-ExtraBoldItalic.53f2de3c566489e23a57.ttf",
     "static/media/JetBrainsMono-BoldItalic.ttf": "/static/media/JetBrainsMono-BoldItalic.de93209f4ba076735662.ttf",
     "static/media/JetBrainsMono-SemiBoldItalic.ttf": "/static/media/JetBrainsMono-SemiBoldItalic.6d4f8c91d6461bf1ea9d.ttf",
@@ -32,11 +32,11 @@
     "static/media/Hacked-KerX.ttf": "/static/media/Hacked-KerX.d981e1d471a16b240218.ttf",
     "index.html": "/index.html",
     "main.4800223b.css.map": "/static/css/main.4800223b.css.map",
-    "main.b807f2d1.js.map": "/static/js/main.b807f2d1.js.map",
-    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
+    "main.44168846.js.map": "/static/js/main.44168846.js.map",
+    "787.b701888c.chunk.js.map": "/static/js/787.b701888c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4800223b.css",
-    "static/js/main.b807f2d1.js"
+    "static/js/main.44168846.js"
   ]
 }
