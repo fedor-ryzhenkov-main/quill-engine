@@ -16,7 +16,7 @@ const PWA: React.FC = () => {
         db = 'http://localhost:1337/api/parts?populate[0]=chapter_collection&populate[1]=chapter_collection.content';
     } else {
         console.log("production fetch")
-        db = 'https://quill-engine-app-emz7p.ondigitalocean.app/db/api/parts?popu';
+        db = 'https://quill-engine-app-emz7p.ondigitalocean.app/db/api/parts?populate[0]=chapter_collection&populate[1]=chapter_collection.content';
     }
     const { data, loading} = useFetch(db)
 
