@@ -1,5 +1,4 @@
-module.exports = [
-  'db-strapi-sqlite::logger',
+export default [
   'db-strapi-sqlite::errors',
   'db-strapi-sqlite::security',
   'db-strapi-sqlite::cors',

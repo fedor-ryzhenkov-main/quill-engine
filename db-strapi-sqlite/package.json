@@ -1,5 +1,5 @@
 {
-  "name": "quill-engine-strapi",
+  "name": "db-strapi-sqlite",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",

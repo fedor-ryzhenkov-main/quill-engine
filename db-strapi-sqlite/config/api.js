@@ -1,7 +1,5 @@
-module.exports = {
-  rest: {
-    defaultLimit: 25,
-    maxLimit: 100,
-    withCount: true,
-  },
+export const rest = {
+  defaultLimit: 25,
+  maxLimit: 100,
+  withCount: true,
 };
