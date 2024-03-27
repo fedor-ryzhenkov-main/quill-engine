@@ -63,14 +63,25 @@ const Header: React.FC<HeaderProps> = ({headerChildren, expandedChildren}) => {
                     {headerChildren}
                 </HeaderContent>
 
-                <img src={inkLine} alt="Ink Line" style={{
-                    width: 'auto',
-                    height: '2.2em',
-                    objectFit: 'cover',
-                }}/>
-            </div>
+                <div style={{
+                    overflow: 'hidden',
+                    position: 'relative',
+                    height: '2em',
+                    width: '100%',
+                    pointerEvents: 'none',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <img src={inkLine} alt="Ink Line" style={{
+                        height: '100%',
+                        display: 'block',
+                        objectFit: 'cover',
+                    }}/>
+                </div>
+                </div>
         </Wrapper>
-    );
+);
 };
 
 export default Header;
