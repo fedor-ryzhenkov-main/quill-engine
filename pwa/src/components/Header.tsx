@@ -1,6 +1,6 @@
 import React, {ReactNode, useState} from 'react';
 import styled from 'styled-components';
-import inkLine from '../assets/images/ink_line.png'; // import your image file
+import inkLine from '../assets/images/ink_line.svg'; // import your image file
 
 const Wrapper = styled.div<{ expanded: boolean }>`
     position: fixed;
@@ -20,8 +20,8 @@ const HeaderContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 3.75em;
+    padding-right: 3.75em;
 `;
 
 const ExpandedContent = styled.div<{ expanded: boolean, hover: boolean }>`
@@ -31,8 +31,8 @@ const ExpandedContent = styled.div<{ expanded: boolean, hover: boolean }>`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 3.75em;
+    padding-right: 3.75em;
     transition: height 0.3s ease;
 `;
 
@@ -64,8 +64,8 @@ const Header: React.FC<HeaderProps> = ({headerChildren, expandedChildren}) => {
                 </HeaderContent>
 
                 <img src={inkLine} alt="Ink Line" style={{
-                    width: '100%',
-                    height: 'auto',
+                    width: 'auto',
+                    height: '2.2em',
                     objectFit: 'cover',
                 }}/>
             </div>

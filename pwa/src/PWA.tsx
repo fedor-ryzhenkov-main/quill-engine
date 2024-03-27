@@ -1,4 +1,5 @@
-import './styles/base/index.css'
+import './styles/base/index.css';
+import styled from 'styled-components';
 import {withWrappers} from "./components/Wrapper";
 import React from "react";
 import {color_theme_css} from "./styles/utilities/global/theme";
@@ -7,6 +8,15 @@ import RulebookPart from "./pages/RulebookPart";
 import {Part} from "./types/part";
 import Header from "./components/Header";
 import PartsTableComponent from "./components/ContentTable";
+
+const Container = styled.div`
+    margin: 0 auto;
+    width: 60%;
+    
+    @media (max-width: 768px) {
+        width: 80%;
+    }
+`;
 
 const PWA: React.FC = () => {
     let db: string;
@@ -42,14 +52,13 @@ const PWA: React.FC = () => {
                 <PartsTableComponent parts={data.data}/>
             }/>
 
-            <div style={{margin: '0 auto', width: '60%'}}>
-            {
+            <Container>
+                {
                     data.data.map((data: undefined) => RulebookPart(data as unknown as Part))
-            }
-            </div>
+                }
+            </Container>
         </div>
- )
-
+    )
 }
 
 export default withWrappers(PWA);

@@ -11,5 +11,11 @@
     --neon-blue: blue;
     --sprawl-purple: purple;
     color: black;
-    font-size: 1.5rem
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    font-size: 0.75rem;
+  }
 }
