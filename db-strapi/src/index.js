@@ -7,7 +7,7 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ db-strapi-sqlite }*/) {},
+  register(/*{ db-strapi }*/) {},
 
   /**
    * An asynchronous bootstrap function that runs before
@@ -16,5 +16,5 @@ module.exports = {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  bootstrap(/*{ db-strapi-sqlite }*/) {},
+  bootstrap(/*{ db-strapi }*/) {},
 };
