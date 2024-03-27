@@ -65,7 +65,6 @@ const Header: React.FC<HeaderProps> = ({headerChildren, expandedChildren}) => {
 
                 <div style={{
                     overflow: 'hidden',
-                    position: 'relative',
                     height: '2em',
                     width: '100%',
                     pointerEvents: 'none',
