@@ -2,7 +2,7 @@ import React, {ReactNode, useState} from 'react';
 import styled from 'styled-components';
 import inkLine from '../assets/images/ink_line.svg'; // import your image file
 
-const Wrapper = styled.div<{ expanded: boolean }>`
+const Wrapper = styled.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -11,21 +11,23 @@ const Wrapper = styled.div<{ expanded: boolean }>`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding-bottom: 4px;
 `;
 
-const HeaderContent = styled.div`
-    height: 1em;
+const HeaderContent = styled.div<{ hover: boolean }>`
+    height: ${({ hover}) => hover ? "0em" : "1em"};
     background-color: black;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: height 0.3s ease;
     padding-left: 3.75em;
     padding-right: 3.75em;
 `;
 
 const ExpandedContent = styled.div<{ expanded: boolean, hover: boolean }>`
-    height: ${({expanded, hover}) => expanded ? '70vh' : hover ? "1em" : "0em"};
+    height: ${({expanded, hover}) => expanded ? '70vh' : hover ? "2em" : "0em"};
     background-color: black;
     color: white;
     display: flex;
@@ -34,6 +36,7 @@ const ExpandedContent = styled.div<{ expanded: boolean, hover: boolean }>`
     padding-left: 3.75em;
     padding-right: 3.75em;
     transition: height 0.3s ease;
+    overflow: hidden;
 `;
 
 type HeaderProps = {
@@ -46,20 +49,12 @@ const Header: React.FC<HeaderProps> = ({headerChildren, expandedChildren}) => {
     const [hover, setHover] = useState(false);
 
     return (
-        <Wrapper expanded={expanded} style={{zIndex: '99'}}>
-            <div onClick={() => setExpanded(!expanded)}>
-
-                <div
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(false)}
-                    style={{position: "absolute", height: expanded ? "0em" : "4em", width: "100%"}}
-                />
-
+        <Wrapper onClick={() => setExpanded(!expanded)} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <ExpandedContent expanded={expanded} hover={hover}>
                     {expandedChildren}
                 </ExpandedContent>
 
-                <HeaderContent>
+                <HeaderContent hover ={hover}>
                     {headerChildren}
                 </HeaderContent>
 
@@ -77,7 +72,6 @@ const Header: React.FC<HeaderProps> = ({headerChildren, expandedChildren}) => {
                         display: 'block',
                         objectFit: 'cover',
                     }}/>
-                </div>
                 </div>
         </Wrapper>
 );

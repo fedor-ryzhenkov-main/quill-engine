@@ -31,7 +31,7 @@ module.exports = ({ env }) => {
   if (env('NODE_ENV') === 'production') {
     Object.assign(config.connection.connection, {
       sslmode: 'disabled',
-      host: env('DATABASE_HOST', 'app-29a2a97e-e5c1-4db9-8ff5-bc1d1603b907-do-user-16123649-0.c.db.ondigitalocean.com'),
+      host: env('DATABASE_HOST'),
       port: env.int('DATABASE_PORT'),
       database: env('DATABASE_NAME'),
       user: env('DATABASE_USERNAME'),

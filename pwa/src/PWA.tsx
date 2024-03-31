@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import PartsTableComponent from "./components/ContentTable";
 import {Route, Routes, useParams} from "react-router-dom";
 import {Rulebook} from "./types/rulebook";
+import RulebookRouter from "./components/RulebookRouter";
 
 const Container = styled.div`
     margin: 0 auto;
@@ -81,7 +82,10 @@ const RulebookComponent: React.FC<RulebookComponentProps> = ({ data }) => {
 
                 </div>
             } expandedChildren={
-                <PartsTableComponent parts={result.attributes.part_collection.data}/>
+                <div className='column' style={{height: '100%'}}>
+                    <RulebookRouter/>
+                    <PartsTableComponent parts={result.attributes.part_collection.data}/>
+                </div>
             }/>
 
             <Container>
