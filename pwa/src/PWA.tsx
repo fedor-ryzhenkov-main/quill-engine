@@ -47,7 +47,7 @@ const PWA: React.FC = () => {
 
     return (
         <Routes>
-            <Route path="/:rulebook_title" element={<RulebookComponent data={data}/>}/>
+            <Route path="/pwa/:rulebook_title" element={<RulebookComponent data={data}/>}/>
         </Routes>
     )
 }
