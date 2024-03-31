@@ -1,4 +1,4 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type {Attribute, Schema} from '@strapi/strapi';
 
 export interface AdminPermission extends Schema.CollectionType {
   collectionName: 'admin_permissions';
@@ -860,7 +860,7 @@ export interface ApiRulebookRulebook extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    parts: Attribute.Relation<
+    part_collection: Attribute.Relation<
       'api::rulebook.rulebook',
       'oneToMany',
       'api::part.part'

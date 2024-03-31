@@ -5,9 +5,10 @@ import React from "react";
 import {color_theme_css} from "./styles/utilities/global/theme";
 import useFetch from "./services/hooks/useFetch";
 import RulebookPart from "./pages/RulebookPart";
-import {Part} from "./types/part";
 import Header from "./components/Header";
 import PartsTableComponent from "./components/ContentTable";
+import {Route, Routes, useParams} from "react-router-dom";
+import {Rulebook} from "./types/rulebook";
 
 const Container = styled.div`
     margin: 0 auto;
@@ -24,6 +25,7 @@ const PWA: React.FC = () => {
     }
 
     const { data, loading, error} = useFetch(process.env.REACT_APP_STRAPI_API_FETCH_ALL_URL)
+    console.log(data)
 
     React.useEffect(() => {
         const style = document.createElement('style');
@@ -44,22 +46,51 @@ const PWA: React.FC = () => {
     )
 
     return (
+        <Routes>
+            <Route path="/pwa/:rulebook_title" element={<RulebookComponent data={data}/>}/>
+        </Routes>
+    )
+}
+
+type RouteParams = {
+    rulebook_title: string;
+};
+
+
+type RulebookComponentProps = {
+    data: any; // replace any with your data type
+};
+
+const RulebookComponent: React.FC<RulebookComponentProps> = ({ data }) => {
+    const { rulebook_title } = useParams<RouteParams>();
+    console.log(rulebook_title)
+    let result = data.data.find((item: any) => item.attributes.rulebook_title === rulebook_title) as Rulebook;
+
+    if (!result) {
+        return (
+            <div>
+                The rulebook with the title "{rulebook_title}" was not found.
+            </div>
+        );
+    }
+
+    return (
         <div>
             <Header headerChildren={
                 <div>
 
                 </div>
             } expandedChildren={
-                <PartsTableComponent parts={data.data}/>
+                <PartsTableComponent parts={result.attributes.part_collection.data}/>
             }/>
 
             <Container>
                 {
-                    data.data.map((data: undefined) => RulebookPart(data as unknown as Part))
+                    result.attributes.part_collection.data.map(data => RulebookPart(data))
                 }
             </Container>
         </div>
-    )
-}
+    );
+};
 
 export default withWrappers(PWA);

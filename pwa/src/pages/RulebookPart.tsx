@@ -3,6 +3,7 @@ import {Part} from "../types/part";
 import RulebookChapter from "./RulebookChapter";
 
 const RulebookPart= (data: Part) => {
+    console.log(data)
     return (
         <div>
             <h2>
