@@ -19,22 +19,23 @@ const Container = styled.div`
 `;
 
 const PWA: React.FC = () => {
-    let db: string;
-
-    if (process.env.NODE_ENV === 'development') {
-        console.log("development fetch")
-        db = 'http://localhost:1337/api/parts?populate[0]=chapter_collection&populate[1]=chapter_collection.content';
-    } else {
-        console.log("production fetch")
-        db = 'https://quill-engine-app-emz7p.ondigitalocean.app/db/api/parts?populate[0]=chapter_collection&populate[1]=chapter_collection.content';
+    if (process.env.REACT_APP_STRAPI_API_FETCH_ALL_URL === undefined) {
+        throw new Error("REACT_APP_STRAPI_API_FETCH_ALL_URL is not defined");
     }
-    const { data, loading} = useFetch(db)
+
+    const { data, loading, error} = useFetch(process.env.REACT_APP_STRAPI_API_FETCH_ALL_URL)
 
     React.useEffect(() => {
         const style = document.createElement('style');
         style.innerHTML = color_theme_css;
         document.head.append(style);
     }, []);
+
+    if (error) return (
+        <div>
+            Error: {error.message}
+        </div>
+    )
 
     if (loading) return (
         <div>

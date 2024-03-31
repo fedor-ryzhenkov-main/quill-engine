@@ -7,7 +7,7 @@ export default ({ env }) => {
   };
 
   // Development configuration
-  if (env('NODE_ENV') !== 'production') {
+  if (env('NODE_ENV') === 'development') {
     Object.assign(config, {
       host: env('HOST', '0.0.0.0'),
       port: env.int('PORT', 1337),
@@ -21,11 +21,11 @@ export default ({ env }) => {
   if (env('NODE_ENV') === 'production') {
     Object.assign(config, {
       proxy: true,
-      url: `${env('APP_URL')}/db`,
+      url: `${env('APP_URL')}`,
       admin: {
         path: '/admin',
         build: {
-          backend: env('ADMIN_BUILD_BACKEND', 'https://quill-engine-app-emz7p.ondigitalocean.app'),
+          backend: env('ADMIN_BUILD_BACKEND'),
         },
       },
     });

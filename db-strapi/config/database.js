@@ -14,14 +14,14 @@ module.exports = ({ env }) => {
   };
 
   // Specific configuration for development
-  if (env('NODE_ENV') !== 'production') {
+  if (env('NODE_ENV') === 'development') {
     Object.assign(config.connection.connection, {
       ssl: env.bool('DATABASE_SSL', false) && {
-        key: env('DATABASE_SSL_KEY', undefined),
-        cert: env('DATABASE_SSL_CERT', undefined),
-        ca: env('DATABASE_SSL_CA', undefined),
-        capath: env('DATABASE_SSL_CAPATH', undefined),
-        cipher: env('DATABASE_SSL_CIPHER', undefined),
+        key: env('DATABASE_SSL_KEY'),
+        cert: env('DATABASE_SSL_CERT'),
+        ca: env('DATABASE_SSL_CA'),
+        capath: env('DATABASE_SSL_CAPATH'),
+        cipher: env('DATABASE_SSL_CIPHER'),
         rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
       },
     });
@@ -29,7 +29,7 @@ module.exports = ({ env }) => {
 
   // Specific configuration for production
   if (env('NODE_ENV') === 'production') {
-    config.connection.connection = {
+    Object.assign(config.connection.connection, {
       sslmode: 'disabled',
       host: env('DATABASE_HOST'),
       port: env.int('DATABASE_PORT'),
@@ -39,7 +39,7 @@ module.exports = ({ env }) => {
       ssl: {
         rejectUnauthorized: env.bool('DATABASE_SSL_SELF', false),
       },
-    };
+    });
     config.connection.debug = false;
   }
 
