@@ -848,6 +848,42 @@ export interface ApiPartPart extends Schema.CollectionType {
   };
 }
 
+export interface ApiRulebookRulebook extends Schema.CollectionType {
+  collectionName: 'rulebooks';
+  info: {
+    singularName: 'rulebook';
+    pluralName: 'rulebooks';
+    displayName: 'Rulebook';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    parts: Attribute.Relation<
+      'api::rulebook.rulebook',
+      'oneToMany',
+      'api::part.part'
+    >;
+    rulebook_title: Attribute.UID;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rulebook.rulebook',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rulebook.rulebook',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -868,6 +904,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::chapter.chapter': ApiChapterChapter;
       'api::part.part': ApiPartPart;
+      'api::rulebook.rulebook': ApiRulebookRulebook;
     }
   }
 }
