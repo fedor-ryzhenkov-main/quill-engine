@@ -884,6 +884,30 @@ export interface ApiRulebookRulebook extends Schema.CollectionType {
   };
 }
 
+export interface ApiTestTest extends Schema.CollectionType {
+  collectionName: 'tests';
+  info: {
+    singularName: 'test';
+    pluralName: 'tests';
+    displayName: 'Test';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    TestOne: Attribute.String;
+    TestTwo: Attribute.Blocks;
+    TestThree: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -905,6 +929,7 @@ declare module '@strapi/types' {
       'api::chapter.chapter': ApiChapterChapter;
       'api::part.part': ApiPartPart;
       'api::rulebook.rulebook': ApiRulebookRulebook;
+      'api::test.test': ApiTestTest;
     }
   }
 }
