@@ -21,11 +21,11 @@ export default ({ env }) => {
   if (env('NODE_ENV') === 'production') {
     Object.assign(config, {
       proxy: true,
-      url: `${env('APP_URL')}`,
+      url: env('APP_URL'),
       admin: {
         path: '/admin',
         build: {
-          backend: env('ADMIN_BUILD_BACKEND'),
+          backend: env('APP_URL'),
         },
       },
     });
