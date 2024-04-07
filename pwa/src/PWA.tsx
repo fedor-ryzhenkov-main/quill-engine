@@ -78,7 +78,7 @@ const RulebookComponent: React.FC<RulebookComponentProps> = ({ data }) => {
     document.title = rulebook.attributes.page_title
 
     return (
-        <div>
+        <div style={{paddingTop: '3em'}}>
             <Header headerChildren={
                 <div>
 
