@@ -19,6 +19,11 @@ img {
 p {
     margin-block-start: 0.7em;
     margin-block-end: 0.7em;
+    line-height: 1.4;
+
+    @media (max-width: 767px) {
+        line-height: 1.3;
+    }
 }
 
 body {

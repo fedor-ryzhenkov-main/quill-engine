@@ -18,8 +18,7 @@
     "content": {
       "type": "dynamiczone",
       "components": [
-        "content.text",
-        "content.text-editor-js"
+        "content.text"
       ]
     },
     "category": {

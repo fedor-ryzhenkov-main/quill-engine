@@ -5,7 +5,7 @@ import styled from 'styled-components';
 // Styled component
 const ButtonRow = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 `;
 
 const RoutingButton = styled(Link)`

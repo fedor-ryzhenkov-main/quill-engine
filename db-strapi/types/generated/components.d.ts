@@ -1,12 +1,13 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface ContentTextEditorJs extends Schema.Component {
-  collectionName: 'components_content_text_editor_js_s';
+export interface ContentMediaItem extends Schema.Component {
+  collectionName: 'components_content_media_items';
   info: {
-    displayName: 'Text (Editor.js)';
+    displayName: 'Media Item';
   };
   attributes: {
-    content: Attribute.RichText;
+    title: Attribute.String;
+    content: Attribute.Media;
   };
 }
 
@@ -24,7 +25,7 @@ export interface ContentText extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'content.text-editor-js': ContentTextEditorJs;
+      'content.media-item': ContentMediaItem;
       'content.text': ContentText;
     }
   }

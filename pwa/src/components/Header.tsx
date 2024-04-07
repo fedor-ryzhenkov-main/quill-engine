@@ -1,4 +1,4 @@
-import React, {ReactNode, useState} from 'react';
+import React, {ReactNode, useEffect, useState} from 'react';
 import styled from 'styled-components';
 import inkLine from '../assets/images/ink_line.svg'; // import your image file
 
@@ -47,9 +47,33 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({headerChildren, expandedChildren}) => {
     const [expanded, setExpanded] = useState(false);
     const [hover, setHover] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 767px)").matches);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        // Cleanup after component unmounts
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
+    }, []);
+
+    const handleMouseEnter = () => {
+        if(!isMobile) {
+            setHover(true);
+        }
+    }
+
+    const handleMouseLeave = () => {
+        if(!isMobile) {
+            setHover(false);
+        }
+    }
 
     return (
-        <Wrapper onClick={() => setExpanded(!expanded)} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+        <Wrapper onClick={() => setExpanded(!expanded)} onMouseEnter={() => handleMouseEnter()} onMouseLeave={() => handleMouseLeave()}>
                 <ExpandedContent expanded={expanded} hover={hover}>
                     {expandedChildren}
                 </ExpandedContent>

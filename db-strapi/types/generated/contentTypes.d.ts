@@ -801,7 +801,7 @@ export interface ApiChapterChapter extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String;
-    content: Attribute.DynamicZone<['content.text', 'content.text-editor-js']>;
+    content: Attribute.DynamicZone<['content.text']>;
     category: Attribute.Enumeration<
       ['Ill Omen', 'Myths of the Outlands', 'Quill Engine Core']
     >;
@@ -816,6 +816,37 @@ export interface ApiChapterChapter extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::chapter.chapter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMediaLibraryMediaLibrary extends Schema.SingleType {
+  collectionName: 'media_libraries';
+  info: {
+    singularName: 'media-library';
+    pluralName: 'media-libraries';
+    displayName: 'Media Library';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.DynamicZone<['content.media-item']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::media-library.media-library',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::media-library.media-library',
       'oneToOne',
       'admin::user'
     > &
@@ -934,6 +965,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::chapter.chapter': ApiChapterChapter;
+      'api::media-library.media-library': ApiMediaLibraryMediaLibrary;
       'api::part.part': ApiPartPart;
       'api::rulebook.rulebook': ApiRulebookRulebook;
       'api::test.test': ApiTestTest;
