@@ -5,7 +5,7 @@ import '../styles/base/components/chapter.css'
 
 const RulebookChapter = (data: Chapter) => {
     return (
-        <div id={`Chapter: ${data.id}`}>
+        <div id={data.attributes.title.replace(/ /g, '_')}>
             <h3 style={{marginBlockEnd: "0.5em"}}>
                 {data.attributes.title}
             </h3>

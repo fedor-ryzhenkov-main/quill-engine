@@ -65,15 +65,17 @@ type RulebookComponentProps = {
 const RulebookComponent: React.FC<RulebookComponentProps> = ({ data }) => {
     const { rulebook_title } = useParams<RouteParams>();
     console.log(rulebook_title)
-    let result = data.data.find((item: any) => item.attributes.rulebook_title === rulebook_title) as Rulebook;
+    let rulebook = data.data.find((item: any) => item.attributes.rulebook_title === rulebook_title) as Rulebook;
 
-    if (!result) {
+    if (!rulebook) {
         return (
             <div>
                 The rulebook with the title "{rulebook_title}" was not found.
             </div>
         );
     }
+
+    document.title = rulebook.attributes.page_title
 
     return (
         <div>
@@ -84,13 +86,13 @@ const RulebookComponent: React.FC<RulebookComponentProps> = ({ data }) => {
             } expandedChildren={
                 <div className='column' style={{height: '100%'}}>
                     <RulebookRouter/>
-                    <PartsTableComponent parts={result.attributes.part_collection.data}/>
+                    <PartsTableComponent parts={rulebook.attributes.part_collection.data}/>
                 </div>
             }/>
 
             <Container>
                 {
-                    result.attributes.part_collection.data.map(data => RulebookPart(data))
+                    rulebook.attributes.part_collection.data.map(data => RulebookPart(data))
                 }
             </Container>
         </div>

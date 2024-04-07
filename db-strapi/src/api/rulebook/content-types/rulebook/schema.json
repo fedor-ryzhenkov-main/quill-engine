@@ -19,6 +19,9 @@
     },
     "rulebook_title": {
       "type": "uid"
+    },
+    "page_title": {
+      "type": "string"
     }
   }
 }

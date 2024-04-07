@@ -5,6 +5,7 @@ interface Rulebook_Attributes {
     updatedAt: string;
     publishedAt: string;
     rulebook_title: string;
+    page_title: string;
     part_collection: Part_Collection;
 }
 

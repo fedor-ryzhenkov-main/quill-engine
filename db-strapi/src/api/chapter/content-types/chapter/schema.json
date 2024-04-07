@@ -18,7 +18,16 @@
     "content": {
       "type": "dynamiczone",
       "components": [
-        "content.text"
+        "content.text",
+        "content.text-editor-js"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Ill Omen",
+        "Myths of the Outlands",
+        "Quill Engine Core"
       ]
     }
   }

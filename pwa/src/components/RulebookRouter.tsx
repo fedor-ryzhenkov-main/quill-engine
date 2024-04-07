@@ -26,6 +26,7 @@ const RulebookRouter = () => {
 
     return (
     <ButtonRow>
+        <RoutingButton to="/pwa/quill_engine_core" onClick={stopPropagation}> Quill Engine Core </RoutingButton>
         <RoutingButton to="/pwa/ill_omen" onClick={stopPropagation}> Ill Omen </RoutingButton>
         <RoutingButton to="/pwa/myths_of_the_outlands" onClick={stopPropagation}> Myths of the Outlands </RoutingButton>
     </ButtonRow>

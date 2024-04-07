@@ -3,6 +3,11 @@ html {
     scroll-padding-top: 3em;
 }
 
+a, a[class] {
+    color: white;
+    cursor: inherit; /* keeps the default cursor */
+}
+
 html, body {
     height:100%;
 }

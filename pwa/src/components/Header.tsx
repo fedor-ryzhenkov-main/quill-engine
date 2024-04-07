@@ -14,8 +14,8 @@ const Wrapper = styled.div`
     padding-bottom: 4px;
 `;
 
-const HeaderContent = styled.div<{ hover: boolean }>`
-    height: ${({ hover}) => hover ? "0em" : "1em"};
+const HeaderContent = styled.div<{ expanded: boolean, hover: boolean }>`
+    height: ${({ expanded, hover}) => expanded ? "1em" : hover ? "0em" : "1em"};
     background-color: black;
     color: white;
     display: flex;
@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({headerChildren, expandedChildren}) => {
                     {expandedChildren}
                 </ExpandedContent>
 
-                <HeaderContent hover ={hover}>
+                <HeaderContent expanded={expanded} hover={hover}>
                     {headerChildren}
                 </HeaderContent>
 

@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_content_text_editor_js_s",
+  "info": {
+    "displayName": "Text (Editor.js)"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

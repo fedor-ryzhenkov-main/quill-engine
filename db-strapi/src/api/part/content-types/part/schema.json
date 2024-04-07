@@ -19,6 +19,14 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::chapter.chapter"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Ill Omen",
+        "Myths of the Outlands",
+        "Quill Engine Core"
+      ]
     }
   }
 }

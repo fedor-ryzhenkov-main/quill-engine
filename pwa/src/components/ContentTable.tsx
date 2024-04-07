@@ -6,9 +6,9 @@ import '../styles/base/components/content-table.css'
 
 const ChapterComponent: React.FC<{ chapter: Chapter }> = ({ chapter }) => (
         <li>
-            <ScrollLink toId={`Chapter: ${chapter.id}`}>
+            <a href={`#${chapter.attributes.title.replace(/ /g, '_')}`}>
                 {chapter.attributes.title}
-            </ScrollLink>
+            </a>
         </li>
 );
 

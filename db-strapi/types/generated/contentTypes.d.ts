@@ -801,7 +801,10 @@ export interface ApiChapterChapter extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String;
-    content: Attribute.DynamicZone<['content.text']>;
+    content: Attribute.DynamicZone<['content.text', 'content.text-editor-js']>;
+    category: Attribute.Enumeration<
+      ['Ill Omen', 'Myths of the Outlands', 'Quill Engine Core']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -838,6 +841,9 @@ export interface ApiPartPart extends Schema.CollectionType {
       'oneToMany',
       'api::chapter.chapter'
     >;
+    category: Attribute.Enumeration<
+      ['Ill Omen', 'Myths of the Outlands', 'Quill Engine Core']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -866,6 +872,7 @@ export interface ApiRulebookRulebook extends Schema.CollectionType {
       'api::part.part'
     >;
     rulebook_title: Attribute.UID;
+    page_title: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
