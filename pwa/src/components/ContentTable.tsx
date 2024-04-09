@@ -23,7 +23,7 @@ const PartComponent: React.FC<{ part: Part }> = ({ part }) => (
 
 const PartsTableComponent: React.FC<{ parts: Part[] }> = ({ parts }) => (
     <div className='content-table'>
-        <ul>
+        <ul style={{marginBlockStart: 0, marginBlockEnd: 0}}>
             {parts.map(p => <PartComponent key={p.id} part={p}/>)}
         </ul>
     </div>

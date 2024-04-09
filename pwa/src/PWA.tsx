@@ -80,12 +80,9 @@ const RulebookComponent: React.FC<RulebookComponentProps> = ({ data }) => {
     return (
         <div style={{paddingTop: '3em'}}>
             <Header headerChildren={
-                <div>
-
-                </div>
+                <RulebookRouter/>
             } expandedChildren={
                 <div className='column' style={{height: '100%'}}>
-                    <RulebookRouter/>
                     <PartsTableComponent parts={rulebook.attributes.part_collection.data}/>
                 </div>
             }/>
